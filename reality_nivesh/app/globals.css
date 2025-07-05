@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+@font-face {
+  font-family: 'SuperaGothic';
+  src: url('/fonts/SuperaGothic-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SuperaGothic';
+  src: url('/fonts/SuperaGothic-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SuperaGothic';
+  src: url('/fonts/SuperaGothic-BlackItalic.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SuperaGothic';
+  src: url('/fonts/SuperaGothic-MediumItalic.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* Apply font globally */
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: 'SuperaGothic', sans-serif; /* Keep only one */
+}
+
+@keyframes marquee {
+  from {
+      transform: translateX(100%);
+  }
+  to {
+      transform: translateX(-100%);
+  }
+}
+/* styles/globals.css */
+html, body {
+  background-color: white !important;
+  color: black;
+}
+
+.animate-marquee {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 8s linear infinite;
+}
