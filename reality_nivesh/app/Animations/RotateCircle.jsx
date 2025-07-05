@@ -19,7 +19,7 @@ function RotateCircle() {
 
                     {/* Rotating Circle */}
                     <motion.div
-                        animate={{ rotat  e: 360 }}
+                        animate={{ rotate: 360 }}
                         transition={{
                             repeat: Infinity,
                             duration: 10, // Animation duration in seconds
