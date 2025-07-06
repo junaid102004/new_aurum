@@ -23,13 +23,18 @@ const Navbar = () => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
     useEffect(() => {
-        if (expandable) {
-            setNavbarBg("bg-black");
+        const screenWidth = window.innerWidth;
+      
+        if (screenWidth < 640) {
+            setNavbarBg("bg-[url('/uploads/bgImage.png')]");
+        } else if (expandable) {
+          setNavbarBg("bg-black");
         } else {
-            const bg = isHome && !scrolled ? "bg-transparent" : "bg-black";
-            setNavbarBg(bg);
+          const bg = isHome && !scrolled ? "bg-transparent" : "bg-black";
+          setNavbarBg(bg);
         }
-    }, [expandable, isHome, scrolled]);
+      }, [expandable, isHome, scrolled]);
+      
     // useEffect(() => {
     //     const handleResize = () => {
     //         const isLargeScreen = window.innerWidth >= 1024;
@@ -50,7 +55,7 @@ const Navbar = () => {
     return (
         <>
             <nav
-                className={`${navbarBg}  fixed w-full top-0 left-0 z-50 transition-all duration-300`}
+                className={`${navbarBg} bg-cover bg-no-repeat  fixed w-full top-0 left-0 z-50 transition-all duration-300`}
             >
                 {/* Navbar content goes here */}
                 <div className=" w-full px-2 ">
