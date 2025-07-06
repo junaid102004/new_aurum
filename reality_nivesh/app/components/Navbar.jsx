@@ -23,17 +23,32 @@ const Navbar = () => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
     useEffect(() => {
-        const screenWidth = window.innerWidth;
+        const updateNavbarBg = () => {
+          const screenWidth = window.innerWidth;
       
-        if (screenWidth < 640) {
-            setNavbarBg("bg-[url('/uploads/bgImage.png')]");
-        } else if (expandable) {
-          setNavbarBg("bg-black");
-        } else {
-          const bg = isHome && !scrolled ? "bg-transparent" : "bg-black";
+          const isSmallScreen = screenWidth < 640;
+      
+          // 👇 this is your original logic — we just tweak the black part
+          const bg =
+            isHome && !scrolled
+              ? "bg-transparent"
+              : isSmallScreen
+              ? "bg-[url('/uploads/bgImage.png')] bg-cover bg-no-repeat"
+              : "bg-black";
+      
           setNavbarBg(bg);
-        }
-      }, [expandable, isHome, scrolled]);
+        };
+      
+        // Run once and on scroll/resize
+        updateNavbarBg();
+        window.addEventListener("resize", updateNavbarBg);
+        window.addEventListener("scroll", updateNavbarBg);
+      
+        return () => {
+          window.removeEventListener("resize", updateNavbarBg);
+          window.removeEventListener("scroll", updateNavbarBg);
+        };
+      }, [isHome, scrolled]);
       
     // useEffect(() => {
     //     const handleResize = () => {
@@ -55,7 +70,7 @@ const Navbar = () => {
     return (
         <>
             <nav
-                className={`${navbarBg} bg-cover bg-no-repeat  fixed w-full top-0 left-0 z-50 transition-all duration-300`}
+                className={`${navbarBg} bg-cover bg-no-repeat  fixed w-full top-0 left-0 z-50 transition-all duration-500`}
             >
                 {/* Navbar content goes here */}
                 <div className=" w-full px-2 ">

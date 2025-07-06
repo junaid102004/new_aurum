@@ -22,6 +22,7 @@ import GetInTouch from "./components/GetInTouch";
 import ContactUs from "./components/ContactUs";
 import Footer from "./components/Footer";
 import MobileNavbar from "./components/MobileNavbar";
+import MobileSubtract from "./components/icons/MobileSubtract";
 // import PriceList from "./components/contact-s";
 // import Practice from "./components/Practice";
 
@@ -62,6 +63,10 @@ const Home = () => {
       
       {/* <GridComponent items={data} />     */}
       <Footer/>
+      <div className="sm:hidden relative ">
+      <MobileSubtract/>
+
+      </div>
       </div>
   );
 };
