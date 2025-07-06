@@ -48,7 +48,7 @@ const Faq = () => {
     return (
         <div className='w-full bg-white h-auto flex p-[100px] flex-col'>
             <div className='flex w-full flex-col '>
-                <h2 className='text-center text-[50px] w-full font-["Supera"] font-bold uppercase'>
+                <h2 className='text-center teaxt-[25px] cmd:text-[50px]  w-full font-["Supera"] font-bold uppercase'>
                     Frequently asked questions
                 </h2>
 

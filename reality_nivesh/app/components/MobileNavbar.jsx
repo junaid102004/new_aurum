@@ -69,12 +69,17 @@ const MobileNavbar = ({ isOpen, setIsOpen }) => {
     ];
 
     const toggleItem = (id) => {
+        // console.log("iddd", id)
         setExpandedItems((prev) => ({
             ...prev,
             [id]: !prev[id],
-        }));
-    };
 
+        }));
+
+    };
+    useEffect(() => {
+        console.log("expandedItems", expandedItems['location'])
+    }, [expandedItems])
     useEffect(() => {
         document.body.style.overflow = isOpen ? "hidden" : "auto";
         return () => {
@@ -122,7 +127,7 @@ const MobileNavbar = ({ isOpen, setIsOpen }) => {
                                     className="border-b-[0.5px] font-['Supera'] font-semibold text-[18px] border-gray-700 py-3"
                                 >
                                     <div className="flex justify-between items-center">
-                                        <a href={`${item.route}`} className="block w-full">
+                                        <a href={`${item.route}`} className=" block w-full">
                                             {item.name}
                                         </a>
 
