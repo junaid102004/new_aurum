@@ -21,6 +21,7 @@ import Faq from "./components/Faq";
 import GetInTouch from "./components/GetInTouch";
 import ContactUs from "./components/ContactUs";
 import Footer from "./components/Footer";
+import MobileNavbar from "./components/MobileNavbar";
 // import PriceList from "./components/contact-s";
 // import Practice from "./components/Practice";
 
@@ -31,9 +32,15 @@ const Home = () => {
       {/* navbar starts */}
 
       {/* navbar ends */}
-      <div className="">
-        {/* <Navbar /> */}
-      </div>
+      <header>
+      {/* Only visible on large screens and up (≥1024px) */}
+      {/* <div className="hidden lg:block"> */}
+        <Navbar />
+      {/* </div> */}
+
+      {/* Only visible on small & medium screens (<1024px) */}
+      
+    </header>
       <HeroSection />
       <AurumCard />
       <Statistics />

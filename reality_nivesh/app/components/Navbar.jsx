@@ -1,15 +1,18 @@
 "use client";
-
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import ToggleBar from "./icons/ToggleBr";
 import { useState, useEffect } from "react";
+import MobileNavbar from "./MobileNavbar";
+import MobileToggleBar from "./MobileToggleBar";
+import NewMobileToggleBar from "./icons/NewMobileToggleBar";
 const Navbar = () => {
     const [expandable, setExpandable] = useState(false);
     const pathname = usePathname();
     const isHome = pathname === "/";
     const [scrolled, setScrolled] = useState(false);
     const [navbarBg, setNavbarBg] = useState("");
+    const [isOpen, setIsOpen] = useState(false);
     // 🔄 Scroll listener
     useEffect(() => {
         const handleScroll = () => {
@@ -27,11 +30,27 @@ const Navbar = () => {
             setNavbarBg(bg);
         }
     }, [expandable, isHome, scrolled]);
+    // useEffect(() => {
+    //     const handleResize = () => {
+    //         const isLargeScreen = window.innerWidth >= 1024;
+    //         setExpandable(isLargeScreen);
+    //     };
+
+    //     // Set initial value on mount
+    //     handleResize();
+
+    //     // Update on resize
+    //     window.addEventListener("resize", handleResize);
+
+    //     return () => {
+    //         window.removeEventListener("resize", handleResize);
+    //     };
+    // }, []);
 
     return (
         <>
             <nav
-                className={`${navbarBg} hidden sm:flex fixed w-full top-0 left-0 z-50 transition-all duration-300`}
+                className={`${navbarBg}  fixed w-full top-0 left-0 z-50 transition-all duration-300`}
             >
                 {/* Navbar content goes here */}
                 <div className=" w-full px-2 ">
@@ -45,7 +64,22 @@ const Navbar = () => {
                                     alt="Description of image"
                                 />
                             </div>
-                            <div className="hidden sm:ml-6 transition-all duration-500	  lg:flex justify-around">
+                            {/* <button
+                                className="p-3 text-white bg-black fixed top-4 left-4 z-50 rounded"
+                                onClick={() => setIsOpen(true)}
+                            >
+                                ☰
+                            </button> */}
+
+                            {/* Overlay (dark background behind the navbar) */}
+                            {/* {isOpen && (
+                                <div
+                                    className="fixed inset-0 bg-black bg-opacity-50 z-40"
+                                    onClick={() => setIsOpen(false)} // click on overlay to close
+                                ></div>
+                            )} */}
+
+                            <div className="hidden border-2  border-red-400  sm:ml-6 transition-all duration-500	  lg:flex justify-around">
                                 <div className="hidden lg:flex  items-start h-full xl:space-x-4">
                                     {!expandable && (
                                         <a href="#" className="rounded-md lg:text-[14px] xl:text-[18px] font-['SuperaGothic'] uppercase text-white">About Us</a>
@@ -176,15 +210,22 @@ const Navbar = () => {
                                     </ul>
                                 </div>
                             </div>
-                            <div>
+                            <div className="hidden lg:flex">
                                 <ToggleBar expandable={expandable} setExpandable={setExpandable} />
+                             
+
                             </div>
+                            <div className="lg:hidden">
+                            <NewMobileToggleBar />
+                            </div>
+
                         </div>
 
                     </div>
                 </div>
 
             </nav>
+
         </>
     );
 };

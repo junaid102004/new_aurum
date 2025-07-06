@@ -56,7 +56,7 @@ const Testimonials = () => {
 
     return () => clearInterval(interval); // cleanup on unmount
   }, [testimonials.length]);
-console.log("active index",activeIndex);
+// console.log("active index",activeIndex);
   return (
     <div className="relative w-full h-[100vh] overflow-hidden mt-5">
       {/* 🔁 Background Video */}
